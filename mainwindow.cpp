@@ -25,12 +25,10 @@
 #include <processanalyser.h>
 
 
-//https://www.mpgh.net/forum/17-game-hacking-tutorials/7511-writing-your-own-c-trainer.html
-
 QString path;
-HANDLE hProcessSnap;	// will store a snapshot of all processes
-HANDLE hProcess = NULL;	// we will use this one for the WarRock process
-PROCESSENTRY32 pe32;	// stores basic info of a process, using this one to read the ProcessID from
+HANDLE hProcessSnap;
+HANDLE hProcess = NULL;
+PROCESSENTRY32 pe32;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -47,7 +45,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("Cs 1.6 binary(hl.exe)"));
+    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*(*.exe)"));
     if(path == ""){
         QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
     }else{
@@ -58,7 +56,7 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    hProcessSnap = CreateToolhelp32Snapshot( TH32CS_SNAPPROCESS, 0 );	// Faz um snapshot do processo
+    hProcessSnap = CreateToolhelp32Snapshot( TH32CS_SNAPPROCESS, 0 );
     pe32.dwSize = sizeof( PROCESSENTRY32 );		// Tamanho correto
     do	// loop até encontrar o processo
         {

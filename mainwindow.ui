@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #23272a;
+   <string notr="true">background-color: #2c2f33	;
 color: white;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -90,8 +90,8 @@ color: white;</string>
       <item row="1" column="2">
        <widget class="QPushButton" name="pushButton_8">
         <property name="styleSheet">
-         <string notr="true">background-color: #ffffff;
-color: #2c2f33;</string>
+         <string notr="true">background-color: #7289da;
+color: white;</string>
         </property>
         <property name="text">
          <string>Auto Detect &amp; Inject</string>
@@ -140,8 +140,8 @@ color: #2c2f33;</string>
       <item row="1" column="1">
        <widget class="QPushButton" name="pushButton_5">
         <property name="styleSheet">
-         <string notr="true">background-color: #ffffff;
-color: #2c2f33;</string>
+         <string notr="true">background-color: #7289da;
+color: white;</string>
         </property>
         <property name="text">
          <string>Open</string>
@@ -161,8 +161,8 @@ color: #2c2f33;</string>
       <item row="1" column="4">
        <widget class="QPushButton" name="pushButton_9">
         <property name="styleSheet">
-         <string notr="true">background-color: #ffffff;
-color: #2c2f33;</string>
+         <string notr="true">background-color: #7289da;
+color: white;</string>
         </property>
         <property name="text">
          <string>SEE ALL PROCESS</string>

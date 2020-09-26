@@ -115,6 +115,45 @@ void fileSignature(QByteArray a, QString* sign){
         sign[2] = 'L';
         sign[3] = 'F';
         qDebug() << "Executable and Linkable Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x21) && ((unsigned char)a.at(1) == (unsigned char)0x3C)
+             && ((unsigned char)a.at(2) == (unsigned char)0x61) && ((unsigned char)a.at(3) == (unsigned char)0x72)
+             && ((unsigned char)a.at(4) == (unsigned char)0x63) && ((unsigned char)a.at(5) == (unsigned char)0x68)
+             && ((unsigned char)a.at(6) == (unsigned char)0x3E)){
+        sign[0] = 'D';
+        sign[1] = 'E';
+        sign[2] = 'B';
+        qDebug() << "linux deb file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x61)
+             && ((unsigned char)a.at(2) == (unsigned char)0x72) && ((unsigned char)a.at(3) == (unsigned char)0x21)
+             && ((unsigned char)a.at(4) == (unsigned char)0x1A) && ((unsigned char)a.at(5) == (unsigned char)0x07)){
+           if(((unsigned char)a.at(6) == (unsigned char)0x01) && ((unsigned char)a.at(7) == (unsigned char)0x00)){
+               sign[0] = 'R';
+               sign[1] = 'A';
+               sign[2] = 'R';
+               sign[3] = '5';
+               qDebug() << "RAR archive version 5.0 onwards";
+           }else{
+               sign[0] = 'R';
+               sign[1] = 'A';
+               sign[2] = 'R';
+               sign[3] = '1';
+               qDebug() << "RAR archive version 1.50 onwards";
+           }
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x37) && ((unsigned char)a.at(1) == (unsigned char)0x7A)
+             && ((unsigned char)a.at(2) == (unsigned char)0xBC) && ((unsigned char)a.at(3) == (unsigned char)0xAF)
+             && ((unsigned char)a.at(4) == (unsigned char)0x27) && ((unsigned char)a.at(5) == (unsigned char)0x1C)){
+        sign[0] = '7';
+        sign[1] = 'Z';
+        sign[2] = 'I';
+        sign[3] = 'P';
+        qDebug() << "7-Zip File Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x25) && ((unsigned char)a.at(1) == (unsigned char)0x50)
+             && ((unsigned char)a.at(2) == (unsigned char)0x44) && ((unsigned char)a.at(3) == (unsigned char)0x46)
+             && ((unsigned char)a.at(4) == (unsigned char)0x2d)){
+        sign[0] = 'P';
+        sign[1] = 'D';
+        sign[2] = 'F';
+        qDebug() << "PDF document";
     }else{
 
     }
@@ -139,6 +178,10 @@ void processanalyser::on_pushButton_2_clicked()
     predict = protectorAssignature(a);
     ui->label_2->setText(predict);
     //qDebug() << a.toHex();
+
+    if(file.size() > 15000){
+        QMessageBox::warning(this, "BIG BIG DETECT", "This file is big, please wait for a seconds...");
+    }
 
     while(!file.atEnd()){
         ui->listWidget->addItem(file.readLine().toHex());

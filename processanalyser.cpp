@@ -27,9 +27,14 @@ void processanalyser::on_pushButton_clicked()
 }
 
 QString protectorAssignature(QByteArray a){
-    qDebug() << "PROTECTORS";
+    //qDebug() << "PROTECTORS";
     QString ret = NULL;
     int i = 0;
+    if(!(a.size() > 3)){
+        qDebug() << "Image size not is better than 3";
+        return ret;
+    }
+
     while(i < a.length()){
         if(((unsigned char)a.at(i) == (unsigned char)0x60)){
             //0  1            5  6  7          11
@@ -246,6 +251,63 @@ QString fileSignature(QByteArray a, QString* sign){
             qDebug() << "tar archive 2º Generation";
             return "tar archive 2º Generation";
         }
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x43) && ((unsigned char)a.at(1) == (unsigned char)0x44)
+             && ((unsigned char)a.at(2) == (unsigned char)0x30) && ((unsigned char)a.at(3) == (unsigned char)0x30)
+             && ((unsigned char)a.at(4) == (unsigned char)0x31)){
+            sign[0] = 'I';
+            sign[1] = 'S';
+            sign[2] = 'O';
+            qDebug() << "ISO9660 CD/DVD image file";
+            return "ISO9660 CD/DVD image file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x49) && ((unsigned char)a.at(1) == (unsigned char)0x44)
+            && ((unsigned char)a.at(2) == (unsigned char)0x33)){
+            sign[0] = 'M';
+            sign[1] = 'P';
+            sign[2] = '3';
+            qDebug() << "MP3 file with an ID3v2 container";
+            return "MP3 file with an ID3v2 container";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xFF)){
+            if(((unsigned char)a.at(1) == (unsigned char)0xFB)){
+                sign[0] = 'M';
+                sign[1] = 'P';
+                sign[2] = '3';
+                sign[3] = '1';
+                qDebug() << "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+                return "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+            }else if(((unsigned char)a.at(1) == (unsigned char)0xF3)){
+                sign[0] = 'M';
+                sign[1] = 'P';
+                sign[2] = '3';
+                sign[3] = '2';
+                qDebug() << "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+                return "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+            }else if(((unsigned char)a.at(1) == (unsigned char)0xF2)){
+                sign[0] = 'M';
+                sign[1] = 'P';
+                sign[2] = '3';
+                sign[3] = '3';
+                qDebug() << "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+                return "MPEG-1 Layer 3 file without an ID3 tag or with an ID3v1 tag (which's appended at the end of the file)";
+            }
+    // 0  1  2  3  4  5  6 7  8  9  10 11
+    //52 49 46 46 ?? ?? ?? ?? 57 41 56 45
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x46) && ((unsigned char)a.at(3) == (unsigned char)0x46)
+             && ((unsigned char)a.at(8) == (unsigned char)0x57) && ((unsigned char)a.at(9) == (unsigned char)0x41)
+             && ((unsigned char)a.at(10) == (unsigned char)0x56) && ((unsigned char)a.at(11) == (unsigned char)0x45)){
+           sign[0] = 'W';
+           sign[1] = 'A';
+           sign[2] = 'V';
+           qDebug() << "Waveform Audio File Format";
+           return "Waveform Audio File Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4F) && ((unsigned char)a.at(1) == (unsigned char)0x67)
+             && ((unsigned char)a.at(2) == (unsigned char)0x67) && ((unsigned char)a.at(3) == (unsigned char)0x53)){
+          sign[0] = 'O';
+          sign[1] = 'g';
+          sign[2] = 'g';
+          sign[3] = 'S';
+          qDebug() << "Ogg, an open source media container format";
+          return "Ogg, an open source media container format";
     }else{
 
     }
@@ -278,7 +340,7 @@ void processanalyser::on_pushButton_2_clicked()
     while(!file.atEnd()){
         a = file.readLine();
         if(predict == NULL){
-            qDebug() << "Verificando";
+            //qDebug() << "Verificando";
             predict = protectorAssignature(a);
         }
         ui->listWidget->addItem(a.toHex());

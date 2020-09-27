@@ -27,25 +27,26 @@ void processanalyser::on_pushButton_clicked()
 }
 
 QString protectorAssignature(QByteArray a){
-    //VM PROTECT FINDER
-    for(int i = 0; i<a.length(); i++){
-        //VM PROTECT 2.X
-        //53 6A 01 68 00 00 40 00 E8 1D 0A FE FF E8
-        //?? ?? ??
-        //FF 6A 01 6A 00 68 00 00 40 00 E8 0A 0A FE FF C3
-        //00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        if(((unsigned char)a.at(i) == (unsigned char)0x53) && ((unsigned char)a.at(i+1) == (unsigned char)0x6A)
-                && ((unsigned char)a.at(i+2) == (unsigned char)0x01) && ((unsigned char)a.at(i+3) == (unsigned char)0x68)
-                && ((unsigned char)a.at(i+4) == (unsigned char)0x00) && ((unsigned char)a.at(i+5) == (unsigned char)0x00) && ((unsigned char)a.at(i+6) == (unsigned char)0x40)
-                && ((unsigned char)a.at(i+7) == (unsigned char)0x00) && ((unsigned char)a.at(i+8) == (unsigned char)0xE8) && ((unsigned char)a.at(i+9) == (unsigned char)0x1D)
-                && ((unsigned char)a.at(i+10) == (unsigned char)0x0A) && ((unsigned char)a.at(i+11) == (unsigned char)0xFE) && ((unsigned char)a.at(i+12) == (unsigned char)0xFF)
-                && ((unsigned char)a.at(i+13) == (unsigned char)0xE8) && ((unsigned char)a.at(i+17) == (unsigned char)0xFF) && ((unsigned char)a.at(i+18) == (unsigned char)0x6A)
-                && ((unsigned char)a.at(i+19) == (unsigned char)0x01) && ((unsigned char)a.at(i+20) == (unsigned char)0x6A) && ((unsigned char)a.at(i+21) == (unsigned char)0x00)
-                && ((unsigned char)a.at(i+22) == (unsigned char)0x68)){
-                return "VM PROTECT 2.X";
+    qDebug() << "PROTECTORS";
+    QString ret = NULL;
+    int i = 0;
+    while(i < a.length()){
+        if(((unsigned char)a.at(i) == (unsigned char)0x60)){
+            //0  1            5  6  7          11
+            //60 BE ?? ?? ?? 00 8D BE ?? ?? ?? FF
+            // ?? = Variant byte
+            // www.fluxuss.ga
+            if(((unsigned char)a.at(i+1) == (unsigned char)0xBE) && ((unsigned char)a.at(i+5) == (unsigned char)0x00)
+                && ((unsigned char)a.at(i+6) == (unsigned char)0x8D) && ((unsigned char)a.at(i+7) == (unsigned char)0xBE)
+                && ((unsigned char)a.at(i+11) == (unsigned char)0xFF)){
+                ret = "UPX of www.upx.sourceforge.net | IS EASY TO UNPACK, JUST FIND THE JMP";
+            }
         }
+
+        i++;
     }
-    return "This file no has protector's, try to debbug with x96dbg and IDA :D";
+
+    return ret;
 }
 
 QString fileSignature(QByteArray a, QString* sign){
@@ -222,6 +223,29 @@ QString fileSignature(QByteArray a, QString* sign){
          sign[3] = 'K';
          qDebug() << "macOS file Alias (Symbolic link)";
          return "macOS file Alias (Symbolic link)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x1F) && ((unsigned char)a.at(1) == (unsigned char)0x8B)){
+        sign[0] = 'G';
+        sign[1] = 'Z';
+        qDebug() << "GZIP compressed file";
+        return "GZIP compressed file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x75) && ((unsigned char)a.at(1) == (unsigned char)0x73)
+             && ((unsigned char)a.at(2) == (unsigned char)0x74) && ((unsigned char)a.at(3) == (unsigned char)0x61)
+             && ((unsigned char)a.at(4) == (unsigned char)0x72)){
+        if(((unsigned char)a.at(5) == (unsigned char)0x00) && ((unsigned char)a.at(6) == (unsigned char)0x30) && ((unsigned char)a.at(7) == (unsigned char)0x30)){
+            sign[0] = 'T';
+            sign[1] = 'A';
+            sign[2] = 'R';
+            sign[3] = '1';
+            qDebug() << "tar archive 1º Generation";
+            return "tar archive 1º Generation";
+        }else if(((unsigned char)a.at(5) == (unsigned char)0x20) && ((unsigned char)a.at(6) == (unsigned char)0x20) && ((unsigned char)a.at(7) == (unsigned char)0x00)){
+            sign[0] = 'T';
+            sign[1] = 'A';
+            sign[2] = 'R';
+            sign[3] = '2';
+            qDebug() << "tar archive 2º Generation";
+            return "tar archive 2º Generation";
+        }
     }else{
 
     }
@@ -233,7 +257,7 @@ void processanalyser::on_pushButton_2_clicked()
 {
     QString sign[4] = {"N", "N", " ", " "};
     QString complete_sign = "";
-    QString predict = "None";
+    QString predict = NULL;
     ui->listWidget->clear();
     QFile file(pathA);
     QMessageBox::warning(this, "LET'S GO !", "Please be pattient while analise is doing....");
@@ -246,14 +270,24 @@ void processanalyser::on_pushButton_2_clicked()
     complete_sign = fileSignature(a, sign);
     ui->label->setText("About Your file: " + sign[0] + sign[1] + sign[2] + sign[3]);
     ui->label_3->setText(complete_sign);
-    predict = protectorAssignature(a);
-    ui->label_2->setText(predict);
 
     if(file.size() > 15000){
         QMessageBox::warning(this, "BIG BIG DETECT", "This file is big, please wait for a seconds...");
     }
 
     while(!file.atEnd()){
-        ui->listWidget->addItem(file.readLine().toHex());
+        a = file.readLine();
+        if(predict == NULL){
+            qDebug() << "Verificando";
+            predict = protectorAssignature(a);
+        }
+        ui->listWidget->addItem(a.toHex());
     }
+    if(predict == NULL){
+        ui->label_2->setText("This file no has protector's, try to debbug with x96dbg and IDA :D");
+    }else{
+        ui->label_2->setText(predict);
+    }
+
+
 }

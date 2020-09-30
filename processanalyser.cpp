@@ -308,6 +308,45 @@ QString fileSignature(QByteArray a, QString* sign){
           sign[3] = 'S';
           qDebug() << "Ogg, an open source media container format";
           return "Ogg, an open source media container format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xCA) && ((unsigned char)a.at(1) == (unsigned char)0xFE)
+             && ((unsigned char)a.at(2) == (unsigned char)0xBA) && ((unsigned char)a.at(3) == (unsigned char)0xBE)){
+          sign[0] = 'C';
+          sign[1] = 'L';
+          sign[2] = 'A';
+          sign[3] = 'S';
+          qDebug() << "Java class file, Mach-O Fat Binary";
+          return "Java class file, Mach-O Fat Binary";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4C) && ((unsigned char)a.at(1) == (unsigned char)0x5A)
+             && ((unsigned char)a.at(2) == (unsigned char)0x49) && ((unsigned char)a.at(3) == (unsigned char)0x50)){
+          sign[0] = 'L';
+          sign[1] = 'Z';
+          qDebug() << "lzip compressed file";
+          return "lzip compressed file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x41) && ((unsigned char)a.at(9) == (unsigned char)0x43)
+             && ((unsigned char)a.at(10) == (unsigned char)0x42) && ((unsigned char)a.at(11) == (unsigned char)0x4D)){
+          sign[0] = 'A';
+          sign[1] = 'C';
+          sign[2] = 'B';
+          sign[3] = 'M';
+          qDebug() << "Amiga Contiguous Bitmap";
+          return "Amiga Contiguous Bitmap";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xBE) && ((unsigned char)a.at(1) == (unsigned char)0xBA)
+             && ((unsigned char)a.at(2) == (unsigned char)0xFE) && ((unsigned char)a.at(3) == (unsigned char)0xCA)){
+          sign[0] = 'D';
+          sign[1] = 'B';
+          sign[2] = 'A';
+          sign[3] = '1';
+          qDebug() << "Palm Desktop Calendar Archive";
+          return "Palm Desktop Calendar Archive";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x01)
+             && ((unsigned char)a.at(2) == (unsigned char)0x44) && ((unsigned char)a.at(3) == (unsigned char)0x54)){
+          sign[0] = 'T';
+          sign[1] = 'D';
+          sign[2] = 'A';
+          qDebug() << "Palm Desktop Calendar Archive";
+          return "Palm Desktop Calendar Archive";
     }else{
 
     }

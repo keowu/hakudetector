@@ -397,6 +397,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = '4';
         qDebug() << "ISO Base Media file (MPEG-4)";
         return "ISO Base Media file (MPEG-4)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x00)
+             && ((unsigned char)a.at(2) == (unsigned char)0x01) && ((unsigned char)a.at(3) == (unsigned char)0xBA)){
+        sign[0] = 'M';
+        sign[1] = '2';
+        sign[2] = 'P';
+        qDebug() << "MPEG Program Stream (MPEG-1 Part 1 (essentially identical) and MPEG-2 Part 1)";
+        return "MPEG Program Stream (MPEG-1 Part 1 (essentially identical) and MPEG-2 Part 1)";
     }else{
 
     }

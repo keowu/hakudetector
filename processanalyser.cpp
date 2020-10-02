@@ -361,6 +361,13 @@ QString fileSignature(QByteArray a, QString* sign){
           sign[2] = 'N';
           qDebug() << "Amazon Kindle Update Package";
           return "Amazon Kindle Update Package";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x01)
+             && ((unsigned char)a.at(2) == (unsigned char)0x42) && ((unsigned char)a.at(3) == (unsigned char)0x44)){
+          sign[0] = 'D';
+          sign[1] = 'B';
+          sign[2] = 'A';
+          qDebug() << "Palm Desktop To Do Archive";
+          return "Palm Desktop To Do Archive";
     }else{
 
     }

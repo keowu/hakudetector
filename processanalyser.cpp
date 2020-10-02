@@ -347,6 +347,13 @@ QString fileSignature(QByteArray a, QString* sign){
           sign[2] = 'A';
           qDebug() << "Palm Desktop Calendar Archive";
           return "Palm Desktop Calendar Archive";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xED) && ((unsigned char)a.at(1) == (unsigned char)0xAB)
+             && ((unsigned char)a.at(2) == (unsigned char)0xEE) && ((unsigned char)a.at(3) == (unsigned char)0xDB)){
+          sign[0] = 'R';
+          sign[1] = 'P';
+          sign[2] = 'M';
+          qDebug() << "RedHat Package Manager (RPM) package";
+          return "RedHat Package Manager (RPM) package";
     }else{
 
     }

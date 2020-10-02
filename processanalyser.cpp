@@ -415,18 +415,29 @@ void processanalyser::on_pushButton_2_clicked()
         QMessageBox::warning(this, "BIG BIG DETECT", "This file is big, please wait for a seconds...");
     }
 
-    while(!file.atEnd()){
-        a = file.readLine();
-        if(predict == NULL){
-            //qDebug() << "Verificando";
-            predict = protectorAssignature(a);
+    QMessageBox::StandardButton resposta = QMessageBox::question(this, "DETECT PROTECTORS", "would you like to detect possible protectors in the file?");
+
+    if(resposta==QMessageBox::Yes){
+        while(!file.atEnd()){
+            a = file.readLine();
+            if(predict == NULL){
+                //qDebug() << "Verificando";
+                predict = protectorAssignature(a);
+            }
+            ui->listWidget->addItem(a.toHex());
         }
-        ui->listWidget->addItem(a.toHex());
-    }
-    if(predict == NULL){
-        ui->label_2->setText("This file no has protector's, try to debbug with x96dbg and IDA :D");
+
+        if(predict == NULL){
+            ui->label_2->setText("This file no has protector's, try to debbug with x96dbg and IDA :D");
+        }else{
+            ui->label_2->setText(predict);
+        }
     }else{
-        ui->label_2->setText(predict);
+        while(!file.atEnd()){
+            a = file.readLine();
+            ui->listWidget->addItem(a.toHex());
+        }
+        ui->label_2->setText("A scan was not performed if the file protectors");
     }
 
 

@@ -368,6 +368,24 @@ QString fileSignature(QByteArray a, QString* sign){
           sign[2] = 'A';
           qDebug() << "Palm Desktop To Do Archive";
           return "Palm Desktop To Do Archive";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x00)
+             && ((unsigned char)a.at(2) == (unsigned char)0x00) && ((unsigned char)a.at(3) == (unsigned char)0x00)
+             && ((unsigned char)a.at(4) == (unsigned char)0x00) && ((unsigned char)a.at(5) == (unsigned char)0x00)
+             && ((unsigned char)a.at(6) == (unsigned char)0x00) && ((unsigned char)a.at(7) == (unsigned char)0x00)
+             && ((unsigned char)a.at(8) == (unsigned char)0x00) && ((unsigned char)a.at(9) == (unsigned char)0x00)
+             && ((unsigned char)a.at(10) == (unsigned char)0x00)){
+        //00 00 00 00 00 00 00 00
+        //00 00 00 00 00 00 00 00
+        //00 00 00 00 00 00 00 00
+        //24 bytes with 23 postion with 0
+        //It is not necessary to implement all possible possibilities,
+        //as no other file can start with this signature,
+        //it can be removed in the future given feedback from the community!
+         sign[0] = 'P';
+         sign[1] = 'D';
+         sign[2] = 'B';
+         qDebug() << "PalmPilot Database/Document File";
+         return "PalmPilot Database/Document File";
     }else{
 
     }

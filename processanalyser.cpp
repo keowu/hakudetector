@@ -386,6 +386,17 @@ QString fileSignature(QByteArray a, QString* sign){
          sign[2] = 'B';
          qDebug() << "PalmPilot Database/Document File";
          return "PalmPilot Database/Document File";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x00)
+             && ((unsigned char)a.at(2) == (unsigned char)0x00) && ((unsigned char)a.at(3) == (unsigned char)0x18)
+             && ((unsigned char)a.at(4) == (unsigned char)0x66) && ((unsigned char)a.at(5) == (unsigned char)0x74)
+             && ((unsigned char)a.at(6) == (unsigned char)0x79) && ((unsigned char)a.at(7) == (unsigned char)0x70)
+             && ((unsigned char)a.at(8) == (unsigned char)0x69) && ((unsigned char)a.at(9) == (unsigned char)0x73)
+             && ((unsigned char)a.at(10) == (unsigned char)0x6F) && ((unsigned char)a.at(11) == (unsigned char)0x6D)){
+        sign[0] = 'M';
+        sign[1] = 'P';
+        sign[2] = '4';
+        qDebug() << "ISO Base Media file (MPEG-4)";
+        return "ISO Base Media file (MPEG-4)";
     }else{
 
     }

@@ -354,6 +354,13 @@ QString fileSignature(QByteArray a, QString* sign){
           sign[2] = 'M';
           qDebug() << "RedHat Package Manager (RPM) package";
           return "RedHat Package Manager (RPM) package";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x53) && ((unsigned char)a.at(1) == (unsigned char)0x50)
+             && ((unsigned char)a.at(2) == (unsigned char)0x30) && ((unsigned char)a.at(3) == (unsigned char)0x31)){
+          sign[0] = 'B';
+          sign[1] = 'I';
+          sign[2] = 'N';
+          qDebug() << "Amazon Kindle Update Package";
+          return "Amazon Kindle Update Package";
     }else{
 
     }

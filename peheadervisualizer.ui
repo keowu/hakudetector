@@ -45,24 +45,54 @@ color: white;</string>
       </widget>
      </item>
      <item row="2" column="0" colspan="3">
-      <widget class="QTableWidget" name="tableWidget">
+      <widget class="QTableWidget" name="tblshow">
        <property name="styleSheet">
         <string notr="true">color: black;
 background-color: white;</string>
        </property>
        <row>
         <property name="text">
-         <string>HELLO WORLD :D</string>
+         <string>DOS HEADER</string>
         </property>
        </row>
        <column>
         <property name="text">
-         <string>PE#1</string>
+         <string>e_magic</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_cblp</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_cp</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_crlc</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_cparhdr</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_minalloc</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>e_maxalloc</string>
         </property>
        </column>
        <item row="0" column="0">
         <property name="text">
-         <string>teste</string>
+         <string/>
         </property>
        </item>
       </widget>

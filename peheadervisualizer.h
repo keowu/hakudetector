@@ -15,6 +15,9 @@ public:
     explicit peheadervisualizer(QWidget *parent = nullptr);
     ~peheadervisualizer();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::peheadervisualizer *ui;
 };

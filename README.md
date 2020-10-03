@@ -5,7 +5,7 @@ A program that detects types of signatures in binaries, detects protectors in bi
 # IN DEVELOPMENT
 [See our planning for new features and improvements.](https://github.com/users/keowu/projects/1)
 
-[See the program running](https://www.youtube.com/watch?v=tx6DXMa5S-4)
+[See the program running](https://www.youtube.com/watch?v=_gsmgV0drPY&list=PLZYkWmyj9iTQq2j_1BKAdj0rXcTF5E6D0)
 
 ### Development
 

@@ -24,6 +24,9 @@
 //form analyses
 #include <processanalyser.h>
 
+//form peheaderanaliser
+#include <peheadervisualizer.h>
+
 
 QString path;
 HANDLE hProcessSnap;
@@ -93,4 +96,11 @@ void MainWindow::on_pushButton_2_clicked()
     processanalyser procan;
     procan.setWindowTitle("Detect File Assignatures");
     procan.exec();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    peheadervisualizer pehv;
+    pehv.setWindowTitle("PE HEADER VISUALIZER");
+    pehv.exec();
 }

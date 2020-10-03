@@ -11,16 +11,19 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    peheadervisualizer.cpp \
     processanalyser.cpp \
     processviewer.cpp
 
 HEADERS += \
     mainwindow.h \
+    peheadervisualizer.h \
     processanalyser.h \
     processviewer.h
 
 FORMS += \
     mainwindow.ui \
+    peheadervisualizer.ui \
     processanalyser.ui \
     processviewer.ui
 

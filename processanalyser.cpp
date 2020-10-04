@@ -404,6 +404,36 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'P';
         qDebug() << "MPEG Program Stream (MPEG-1 Part 1 (essentially identical) and MPEG-2 Part 1)";
         return "MPEG Program Stream (MPEG-1 Part 1 (essentially identical) and MPEG-2 Part 1)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x7B) && ((unsigned char)a.at(1) == (unsigned char)0x5C)
+             && ((unsigned char)a.at(2) == (unsigned char)0x72) && ((unsigned char)a.at(3) == (unsigned char)0x74)
+             && ((unsigned char)a.at(4) == (unsigned char)0x66) && ((unsigned char)a.at(5) == (unsigned char)0x31)){
+        sign[0] = 'R';
+        sign[1] = 'T';
+        sign[2] = 'F';
+        qDebug() << "Rich Text Format";
+        return "Rich Text Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x27) && ((unsigned char)a.at(1) == (unsigned char)0x05)
+             && ((unsigned char)a.at(2) == (unsigned char)0x19) && ((unsigned char)a.at(3) == (unsigned char)0x56)){
+        sign[0] = 'U';
+        sign[1] = 'B';
+        sign[2] = 'T';
+        qDebug() << "U-Boot / uImage. Das U-Boot Universal Boot Loader";
+        return "U-Boot / uImage. Das U-Boot Universal Boot Loader";
+    }else if((((unsigned char)a.at(0) == (unsigned char)0x43) && ((unsigned char)a.at(1) == (unsigned char)0x57)
+             && ((unsigned char)a.at(2) == (unsigned char)0x53)) || (((unsigned char)a.at(0) == (unsigned char)0x46)
+            && ((unsigned char)a.at(1) == (unsigned char)0x57) && ((unsigned char)a.at(2) == (unsigned char)0x53))){
+        sign[0] = 'S';
+        sign[1] = 'W';
+        sign[2] = 'F';
+        qDebug() << "flash .swf";
+        return "flash .swf";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x61)
+             && ((unsigned char)a.at(2) == (unsigned char)0x73) && ((unsigned char)a.at(3) == (unsigned char)0x6d)){
+        sign[0] = 'W';
+        sign[1] = 'A';
+        sign[2] = 'S';
+        qDebug() << "WebAssembly binary format";
+        return "WebAssembly binary format";
     }else{
 
     }

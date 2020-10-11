@@ -494,6 +494,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'R';
         qDebug() << "OAR file archive format";
         return "OAR file archive format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x80) && ((unsigned char)a.at(1) == (unsigned char)0x2A)
+             && ((unsigned char)a.at(2) == (unsigned char)0x5F) && ((unsigned char)a.at(3) == (unsigned char)0xD7)){
+        sign[0] = 'C';
+        sign[1] = 'I';
+        sign[2] = 'N';
+        qDebug() << "Kodak Cineon image";
+        return "Kodak Cineon image";
     }else{
 
     }

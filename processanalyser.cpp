@@ -518,6 +518,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'L';
         qDebug() << "Email Message var5";
         return "Email Message var5";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x74) && ((unsigned char)a.at(1) == (unsigned char)0x6F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x78) && ((unsigned char)a.at(3) == (unsigned char)0x33)){
+        sign[0] = 'T';
+        sign[1] = 'O';
+        sign[2] = 'X';
+        qDebug() << "Open source portable voxel file";
+        return "Open source portable voxel file";
     }else{
 
     }

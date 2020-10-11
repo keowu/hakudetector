@@ -509,6 +509,15 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'L';
         qDebug() << "eXtensible Markup Language when using the ASCII character encoding";
         return "eXtensible Markup Language when using the ASCII character encoding";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x65)
+             && ((unsigned char)a.at(2) == (unsigned char)0x63) && ((unsigned char)a.at(3) == (unsigned char)0x65)
+             && ((unsigned char)a.at(4) == (unsigned char)0x69) && ((unsigned char)a.at(5) == (unsigned char)0x76)
+             && ((unsigned char)a.at(6) == (unsigned char)0x65) && ((unsigned char)a.at(7) == (unsigned char)0x64)){
+        sign[0] = 'E';
+        sign[1] = 'M';
+        sign[2] = 'L';
+        qDebug() << "Email Message var5";
+        return "Email Message var5";
     }else{
 
     }

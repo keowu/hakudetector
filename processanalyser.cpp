@@ -440,6 +440,15 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'P';
         qDebug() << "BMP file, a bitmap format used mostly in the Windows world";
         return "BMP file, a bitmap format used mostly in the Windows world";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x46) && ((unsigned char)a.at(3) == (unsigned char)0x46)
+             && ((unsigned char)a.at(8) == (unsigned char)0x41) && ((unsigned char)a.at(9) == (unsigned char)0x56)
+             && ((unsigned char)a.at(10) == (unsigned char)0x49) && ((unsigned char)a.at(11) == (unsigned char)0x20)){
+        sign[0] = 'A';
+        sign[1] = 'V';
+        sign[2] = 'I';
+        qDebug() << "Audio Video Interleave video format";
+        return "Audio Video Interleave video format";
     }else{
 
     }

@@ -479,6 +479,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'P';
         qDebug() << "Lepton compressed JPEG image";
         return "Lepton compressed JPEG image";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4D) && ((unsigned char)a.at(1) == (unsigned char)0x53)
+             && ((unsigned char)a.at(2) == (unsigned char)0x43) && ((unsigned char)a.at(3) == (unsigned char)0x46)){
+        sign[0] = 'C';
+        sign[1] = 'A';
+        sign[2] = 'B';
+        qDebug() << "Microsoft Cabinet file";
+        return "Microsoft Cabinet file";
     }else{
 
     }

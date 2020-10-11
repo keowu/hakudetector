@@ -434,6 +434,12 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'S';
         qDebug() << "WebAssembly binary format";
         return "WebAssembly binary format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x42) && ((unsigned char)a.at(1) == (unsigned char)0x4D)){
+        sign[0] = 'B';
+        sign[1] = 'M';
+        sign[2] = 'P';
+        qDebug() << "BMP file, a bitmap format used mostly in the Windows world";
+        return "BMP file, a bitmap format used mostly in the Windows world";
     }else{
 
     }

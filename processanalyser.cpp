@@ -472,6 +472,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'D';
         qDebug() << "Photoshop Document file, Adobe Photoshop's native file format";
         return "Photoshop Document file, Adobe Photoshop's native file format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xCF) && ((unsigned char)a.at(1) == (unsigned char)0x84)
+             && ((unsigned char)a.at(2) == (unsigned char)0x01)){
+        sign[0] = 'L';
+        sign[1] = 'E';
+        sign[2] = 'P';
+        qDebug() << "Lepton compressed JPEG image";
+        return "Lepton compressed JPEG image";
     }else{
 
     }

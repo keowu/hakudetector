@@ -525,6 +525,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'X';
         qDebug() << "Open source portable voxel file";
         return "Open source portable voxel file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x41) && ((unsigned char)a.at(1) == (unsigned char)0x47)
+             && ((unsigned char)a.at(2) == (unsigned char)0x44) & ((unsigned char)a.at(3) == (unsigned char)0x33)){
+        sign[0] = 'F';
+        sign[1] = 'H';
+        sign[2] = '8';
+        qDebug() << "FreeHand 8 document";
+        return "FreeHand 8 document";
     }else{
 
     }

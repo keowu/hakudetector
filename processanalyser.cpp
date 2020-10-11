@@ -501,6 +501,14 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'N';
         qDebug() << "Kodak Cineon image";
         return "Kodak Cineon image";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x3C) && ((unsigned char)a.at(1) == (unsigned char)0x3F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x78) && ((unsigned char)a.at(3) == (unsigned char)0x6D)
+             && ((unsigned char)a.at(4) == (unsigned char)0x6C) && ((unsigned char)a.at(5) == (unsigned char)0x20)){
+        sign[0] = 'X';
+        sign[1] = 'M';
+        sign[2] = 'L';
+        qDebug() << "eXtensible Markup Language when using the ASCII character encoding";
+        return "eXtensible Markup Language when using the ASCII character encoding";
     }else{
 
     }

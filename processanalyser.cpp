@@ -465,6 +465,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'R';
         qDebug() << "OpenEXR image";
         return "OpenEXR image";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x38) & ((unsigned char)a.at(1) == (unsigned char)0x42)
+             && ((unsigned char)a.at(2) == (unsigned char)0x50) && ((unsigned char)a.at(3) == (unsigned char)0x53)){
+        sign[0] = 'P';
+        sign[1] = 'S';
+        sign[2] = 'D';
+        qDebug() << "Photoshop Document file, Adobe Photoshop's native file format";
+        return "Photoshop Document file, Adobe Photoshop's native file format";
     }else{
 
     }

@@ -449,6 +449,15 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'I';
         qDebug() << "Audio Video Interleave video format";
         return "Audio Video Interleave video format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x46) && ((unsigned char)a.at(9) == (unsigned char)0x41)
+             && ((unsigned char)a.at(10) == (unsigned char)0x4E) && ((unsigned char)a.at(11) == (unsigned char)0x54)){
+        sign[0] = 'I';
+        sign[1] = 'F';
+        sign[2] = 'F';
+        qDebug() << "Amiga Fantavision Movie";
+        return "Amiga Fantavision Movie";
     }else{
 
     }

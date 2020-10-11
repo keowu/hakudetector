@@ -458,6 +458,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'F';
         qDebug() << "Amiga Fantavision Movie";
         return "Amiga Fantavision Movie";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x76) && ((unsigned char)a.at(1) == (unsigned char)0x2F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x31) && ((unsigned char)a.at(3) == (unsigned char)0x01)){
+        sign[0] = 'E';
+        sign[1] = 'X';
+        sign[2] = 'R';
+        qDebug() << "OpenEXR image";
+        return "OpenEXR image";
     }else{
 
     }

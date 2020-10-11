@@ -532,6 +532,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = '8';
         qDebug() << "FreeHand 8 document";
         return "FreeHand 8 document";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4F) && ((unsigned char)a.at(1) == (unsigned char)0x52)
+             && ((unsigned char)a.at(2) == (unsigned char)0x43)){
+        sign[0] = 'O';
+        sign[1] = 'R';
+        sign[2] = 'C';
+        qDebug() << "Apache ORC (Optimized Row Columnar) file format";
+        return "Apache ORC (Optimized Row Columnar) file format";
     }else{
 
     }

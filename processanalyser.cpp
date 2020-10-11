@@ -486,6 +486,14 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'B';
         qDebug() << "Microsoft Cabinet file";
         return "Microsoft Cabinet file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4F) && ((unsigned char)a.at(1) == (unsigned char)0x41)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52)){
+        //In the future the byte of position 3 is the version of the file, it may be added in the future, be free to modify if necessary !
+        sign[0] = 'O';
+        sign[1] = 'A';
+        sign[2] = 'R';
+        qDebug() << "OAR file archive format";
+        return "OAR file archive format";
     }else{
 
     }

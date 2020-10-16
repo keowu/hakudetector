@@ -560,6 +560,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = '8';
         qDebug() << "UTF-8 encoded Unicode byte order mark, commonly seen in text files.";
         return "UTF-8 encoded Unicode byte order mark, commonly seen in text files.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xFE) && ((unsigned char)a.at(1) == (unsigned char)0xED)
+             && ((unsigned char)a.at(2) == (unsigned char)0xFE) && ((unsigned char)a.at(3) == (unsigned char)0xED)){
+        sign[0] = 'J';
+        sign[1] = 'K';
+        sign[2] = 'S';
+        qDebug() << "JKS JavakeyStore";
+        return "JKS JavakeyStore";
     }else{
 
     }

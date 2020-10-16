@@ -577,6 +577,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'S';
         qDebug() << "IFF Musical Score";
         return "IFF Musical Score";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4D) && ((unsigned char)a.at(1) == (unsigned char)0x4C)
+             && ((unsigned char)a.at(2) == (unsigned char)0x56) && ((unsigned char)a.at(3) == (unsigned char)0x49)){
+        sign[0] = 'M';
+        sign[1] = 'L';
+        sign[2] = 'V';
+        qDebug() << "Magic Lantern Video file";
+        return "Magic Lantern Video file";
     }else{
 
     }

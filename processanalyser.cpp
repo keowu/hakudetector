@@ -552,7 +552,14 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'B';
         qDebug() << "KDB file";
         return "KDB file";
-
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xEF) && ((unsigned char)a.at(1) == (unsigned char)0xBB)
+             && ((unsigned char)a.at(2) == (unsigned char)0xBF)){
+        sign[0] = 'U';
+        sign[1] = 'T';
+        sign[2] = 'F';
+        sign[3] = '8';
+        qDebug() << "UTF-8 encoded Unicode byte order mark, commonly seen in text files.";
+        return "UTF-8 encoded Unicode byte order mark, commonly seen in text files.";
     }else{
 
     }

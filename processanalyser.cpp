@@ -567,6 +567,16 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'S';
         qDebug() << "JKS JavakeyStore";
         return "JKS JavakeyStore";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x43) && ((unsigned char)a.at(9) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(10) == (unsigned char)0x55) && ((unsigned char)a.at(11) == (unsigned char)0x53)){
+        sign[0] = 'C';
+        sign[1] = 'M';
+        sign[2] = 'U';
+        sign[3] = 'S';
+        qDebug() << "IFF Musical Score";
+        return "IFF Musical Score";
     }else{
 
     }

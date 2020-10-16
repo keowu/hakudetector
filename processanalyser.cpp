@@ -539,6 +539,20 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'C';
         qDebug() << "Apache ORC (Optimized Row Columnar) file format";
         return "Apache ORC (Optimized Row Columnar) file format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x37) && ((unsigned char)a.at(1) == (unsigned char)0x48)
+             && ((unsigned char)a.at(2) == (unsigned char)0x03) && ((unsigned char)a.at(3) == (unsigned char)0x02)
+             && ((unsigned char)a.at(4) == (unsigned char)0x00) && ((unsigned char)a.at(5) == (unsigned char)0x00)
+             && ((unsigned char)a.at(6) == (unsigned char)0x00) && ((unsigned char)a.at(7) == (unsigned char)0x00)
+             && ((unsigned char)a.at(8) == (unsigned char)0x58) && ((unsigned char)a.at(9) == (unsigned char)0x35)
+             && ((unsigned char)a.at(10) == (unsigned char)0x30) && ((unsigned char)a.at(11) == (unsigned char)0x39)
+             && ((unsigned char)a.at(12) == (unsigned char)0x4B) && ((unsigned char)a.at(13) == (unsigned char)0x45)
+             && ((unsigned char)a.at(14) == (unsigned char)0x59)){
+        sign[0] = 'K';
+        sign[1] = 'D';
+        sign[2] = 'B';
+        qDebug() << "KDB file";
+        return "KDB file";
+
     }else{
 
     }

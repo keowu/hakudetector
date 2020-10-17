@@ -14,6 +14,7 @@ class peheadervisualizer : public QDialog
 public:
     explicit peheadervisualizer(QWidget *parent = nullptr);
     ~peheadervisualizer();
+    void openFileFromAnotherScreen(QString pathfromanother);
 
 private slots:
     void on_pushButton_clicked();

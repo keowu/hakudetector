@@ -12,18 +12,21 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     peheadervisualizer.cpp \
+    petools.cpp \
     processanalyser.cpp \
     processviewer.cpp
 
 HEADERS += \
     mainwindow.h \
     peheadervisualizer.h \
+    petools.h \
     processanalyser.h \
     processviewer.h
 
 FORMS += \
     mainwindow.ui \
     peheadervisualizer.ui \
+    petools.ui \
     processanalyser.ui \
     processviewer.ui
 

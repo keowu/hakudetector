@@ -7,7 +7,11 @@
 #include <qdebug.h>
 
 #include <QMessageBox>
+#include "petools.h"
 
+#include "peheadervisualizer.h"
+
+QByteArray memoryMAP = NULL;
 QString pathA = NULL;
 processanalyser::processanalyser(QWidget *parent) :
     QDialog(parent),
@@ -605,6 +609,7 @@ void processanalyser::on_pushButton_2_clicked()
     }
 
     QByteArray a = file.readLine();
+    memoryMAP +=a;
     complete_sign = fileSignature(a, sign);
     ui->label->setText("About Your file: " + sign[0] + sign[1] + sign[2] + sign[3]);
     ui->label_3->setText(complete_sign);
@@ -633,10 +638,25 @@ void processanalyser::on_pushButton_2_clicked()
     }else{
         while(!file.atEnd()){
             a = file.readLine();
+            memoryMAP +=a;
             ui->listWidget->addItem(a.toHex());
         }
         ui->label_2->setText("A scan was not performed if the file protectors");
     }
+}
 
+void processanalyser::on_pushButton_3_clicked()
+{
+   petools pet;
+   pet.setWindowTitle("PE TOOLS");
+   pet.setMemoryFile(memoryMAP);
+   pet.exec();
+}
 
+void processanalyser::on_pushButton_4_clicked()
+{
+    peheadervisualizer pehv;
+    pehv.openFileFromAnotherScreen(pathA);
+    pehv.setWindowTitle("From another Process Analysis.");
+    pehv.exec();
 }

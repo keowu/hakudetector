@@ -18,6 +18,7 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void peheadervisualizer_go();
 
 private:
     Ui::peheadervisualizer *ui;

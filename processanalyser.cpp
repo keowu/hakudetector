@@ -613,6 +613,15 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'C';
         qDebug() << "Free Lossless Audio Codec";
         return "Free Lossless Audio Codec";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x64) && ((unsigned char)a.at(1) == (unsigned char)0x65)
+             && ((unsigned char)a.at(2) == (unsigned char)0x78) && ((unsigned char)a.at(3) == (unsigned char)0x0A)
+             && ((unsigned char)a.at(4) == (unsigned char)0x30) && ((unsigned char)a.at(5) == (unsigned char)0x33)
+             && ((unsigned char)a.at(6) == (unsigned char)0x35) && ((unsigned char)a.at(7) == (unsigned char)0x00)){
+        sign[0] = 'D';
+        sign[1] = 'E';
+        sign[2] = 'X';
+        qDebug() << "Dalvik Executable";
+        return "Dalvik Executable";
     }else{
 
     }

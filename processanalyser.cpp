@@ -658,6 +658,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'N';
         qDebug() << "Microsoft Zone Identifier for URL Security Zones";
         return "Microsoft Zone Identifier for URL Security Zones";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x45) && ((unsigned char)a.at(1) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(2) == (unsigned char)0x58) && ((unsigned char)a.at(3) == (unsigned char)0x32)){
+        sign[0] = 'E';
+        sign[1] = 'Z';
+        sign[2] = '2';
+        qDebug() << "Emulator Emaxsynth samples";
+        return "Emulator Emaxsynth samples";
     }else{
 
     }

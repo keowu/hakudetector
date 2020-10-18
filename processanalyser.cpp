@@ -622,6 +622,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'X';
         qDebug() << "Dalvik Executable";
         return "Dalvik Executable";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x43) && ((unsigned char)a.at(1) == (unsigned char)0x72)
+             && ((unsigned char)a.at(2) == (unsigned char)0x32) && ((unsigned char)a.at(3) == (unsigned char)0x34)){
+        sign[0] = 'C';
+        sign[1] = 'R';
+        sign[2] = 'X';
+        qDebug() << "Google Chrome extension or packaged app";
+        return "Google Chrome extension or packaged app";
     }else{
 
     }

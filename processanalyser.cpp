@@ -588,6 +588,13 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'V';
         qDebug() << "Magic Lantern Video file";
         return "Magic Lantern Video file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4D) && ((unsigned char)a.at(1) == (unsigned char)0x54)
+             && ((unsigned char)a.at(2) == (unsigned char)0x68) && ((unsigned char)a.at(3) == (unsigned char)0x64)){
+        sign[0] = 'M';
+        sign[1] = 'I';
+        sign[2] = 'D';
+        qDebug() << "MIDI sound file";
+        return "MIDI sound file";
     }else{
 
     }

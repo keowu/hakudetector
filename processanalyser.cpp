@@ -629,6 +629,22 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'X';
         qDebug() << "Google Chrome extension or packaged app";
         return "Google Chrome extension or packaged app";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xA1) && ((unsigned char)a.at(1) == (unsigned char)0xB2)
+             && ((unsigned char)a.at(2) == (unsigned char)0xC3) && ((unsigned char)a.at(3) == (unsigned char)0xD4)){
+        sign[0] = 'P';
+        sign[1] = 'C';
+        sign[2] = 'A';
+        sign[3] = 'P';
+        qDebug() << "Libpcap File Format 1º Gen";
+        return "Libpcap File Format 1º Gen";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xD4) && ((unsigned char)a.at(1) == (unsigned char)0xC3)
+             && ((unsigned char)a.at(2) == (unsigned char)0xB2) && ((unsigned char)a.at(3) == (unsigned char)0xA1)){
+        sign[0] = 'P';
+        sign[1] = 'C';
+        sign[2] = 'A';
+        sign[3] = 'P';
+        qDebug() << "Libpcap File Format 2º Gen";
+        return "Libpcap File Format 2º Gen";
     }else{
 
     }

@@ -595,6 +595,16 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'D';
         qDebug() << "MIDI sound file";
         return "MIDI sound file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x53) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x4D) && ((unsigned char)a.at(3) == (unsigned char)0x50)
+             && ((unsigned char)a.at(4) == (unsigned char)0x4C) && ((unsigned char)a.at(5) == (unsigned char)0x45)
+             && ((unsigned char)a.at(6) == (unsigned char)0x20) && ((unsigned char)a.at(7) == (unsigned char)0x20)){
+        sign[0] = 'F';
+        sign[1] = 'I';
+        sign[2] = 'T';
+        sign[3] = 'S';
+        qDebug() << "Flexible Image Transport System (FITS)";
+        return "Flexible Image Transport System (FITS)";
     }else{
 
     }

@@ -645,6 +645,19 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'P';
         qDebug() << "Libpcap File Format 2º Gen";
         return "Libpcap File Format 2º Gen";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x5B) && ((unsigned char)a.at(1) == (unsigned char)0x5A)
+             && ((unsigned char)a.at(2) == (unsigned char)0x6F) && ((unsigned char)a.at(3) == (unsigned char)0x6E)
+             && ((unsigned char)a.at(4) == (unsigned char)0x65) && ((unsigned char)a.at(5) == (unsigned char)0x54)
+             && ((unsigned char)a.at(6) == (unsigned char)0x72) && ((unsigned char)a.at(7) == (unsigned char)0x61)
+             && ((unsigned char)a.at(8) == (unsigned char)0x6E) && ((unsigned char)a.at(9) == (unsigned char)0x73)
+             && ((unsigned char)a.at(10) == (unsigned char)0x66) && ((unsigned char)a.at(11) == (unsigned char)0x65)
+             && ((unsigned char)a.at(12) == (unsigned char)0x72) && ((unsigned char)a.at(13) == (unsigned char)0x5D)){
+        sign[0] = 'I';
+        sign[1] = 'D';
+        sign[2] = 'E';
+        sign[3] = 'N';
+        qDebug() << "Microsoft Zone Identifier for URL Security Zones";
+        return "Microsoft Zone Identifier for URL Security Zones";
     }else{
 
     }

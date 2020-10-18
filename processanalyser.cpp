@@ -665,6 +665,12 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = '2';
         qDebug() << "Emulator Emaxsynth samples";
         return "Emulator Emaxsynth samples";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x23) && ((unsigned char)a.at(1) == (unsigned char)0x21)){
+        sign[0] = 'S';
+        sign[1] = 'H';
+        sign[2] = 'E';
+        qDebug() << "Script or data to be passed to the program following the shebang (#!)";
+        return "Script or data to be passed to the program following the shebang (#!)";
     }else{
 
     }

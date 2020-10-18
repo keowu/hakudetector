@@ -605,6 +605,14 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'S';
         qDebug() << "Flexible Image Transport System (FITS)";
         return "Flexible Image Transport System (FITS)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x66) && ((unsigned char)a.at(1) == (unsigned char)0x4C)
+             && ((unsigned char)a.at(2) == (unsigned char)0x61) && ((unsigned char)a.at(3) == (unsigned char)0x43)){
+        sign[0] = 'F';
+        sign[1] = 'L';
+        sign[2] = 'A';
+        sign[3] = 'C';
+        qDebug() << "Free Lossless Audio Codec";
+        return "Free Lossless Audio Codec";
     }else{
 
     }

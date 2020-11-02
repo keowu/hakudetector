@@ -199,7 +199,7 @@ color: white;</string>
        <string notr="true">background-color: #7289da;</string>
       </property>
       <property name="text">
-       <string>3</string>
+       <string>INJECT TOOLS</string>
       </property>
      </widget>
     </item>

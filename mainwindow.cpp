@@ -27,6 +27,12 @@
 //form peheaderanaliser
 #include <peheadervisualizer.h>
 
+//form inject
+#include <injecttools.h>
+
+//get admin
+#include <shlobj.h>
+
 
 QString path;
 HANDLE hProcessSnap;
@@ -103,4 +109,12 @@ void MainWindow::on_pushButton_clicked()
     peheadervisualizer pehv;
     pehv.setWindowTitle("PE HEADER VISUALIZER");
     pehv.exec();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    injecttools injecttool;
+    injecttool.setWindowTitle("DLL Inject");
+    injecttool.isUSERANDMIN(IsUserAnAdmin());
+    injecttool.exec();
 }

@@ -1,0 +1,17 @@
+﻿  pch.cpp
+  BsodAlg.cpp
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\BsodAlg.cpp(10,23): warning C4273: 'BSOD_DEATH': vínculo de dll inconsistente
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\BsodAlg.h(9,29): message : consulte a definição anterior de 'BSOD_DEATH'
+  dllmain.cpp
+  helloworldinject.cpp
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\helloworldinject.cpp(5,23): warning C4273: 'helloworld': vínculo de dll inconsistente
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\helloworldinject.h(9,32): message : consulte a definição anterior de 'helloworld'
+  HideTaskManager.cpp
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\HideTaskManager.cpp(8,1): warning C4273: 'blockUserTask': vínculo de dll inconsistente
+C:\Users\Joao\source\repos\WannaHakuLib\WannaHakuLib\HideTaskManager.h(9,41): message : consulte a definição anterior de 'blockUserTask'
+     Criando biblioteca C:\Users\Joao\source\repos\WannaHakuLib\Release\WannaHakuLib.lib e objeto C:\Users\Joao\source\repos\WannaHakuLib\Release\WannaHakuLib.exp
+  Gerando código
+  Previous IPDB not found, fall back to full compilation.
+  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finalizada a geração de código
+  WannaHakuLib.vcxproj -> C:\Users\Joao\source\repos\WannaHakuLib\Release\WannaHakuLib.dll

@@ -1,3 +1,12 @@
+/***************************************************************************
+ *                                                                         *
+ *   Copyright (C) 2020 by Keowu                                           *
+ *                                                                         *
+ *   www.joaovitor.gq                                                      *
+ *   www.github.com/keowu                                                  *
+ *                                                                         *
+ ***************************************************************************/
+
 #include "injecttools.h"
 #include "ui_injecttools.h"
 #include <QLibrary>

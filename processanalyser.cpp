@@ -1,3 +1,11 @@
+/***************************************************************************
+ *                                                                         *
+ *   Copyright (C) 2020 by Keowu                                           *
+ *                                                                         *
+ *   www.joaovitor.gq                                                      *
+ *   www.github.com/keowu                                                  *
+ *                                                                         *
+ ***************************************************************************/
 #include "processanalyser.h"
 #include "ui_processanalyser.h"
 
@@ -671,6 +679,49 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'E';
         qDebug() << "Script or data to be passed to the program following the shebang (#!)";
         return "Script or data to be passed to the program following the shebang (#!)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x31) && ((unsigned char)a.at(1) == (unsigned char)0x0A)
+             && ((unsigned char)a.at(2) == (unsigned char)0x30) && ((unsigned char)a.at(3) == (unsigned char)0x30)){
+        sign[0] = 'S';
+        sign[1] = 'R';
+        sign[2] = 'T';
+        qDebug() << "SubRip File";
+        return "SubRip File";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x3A) && ((unsigned char)a.at(1) == (unsigned char)0x29)
+             && ((unsigned char)a.at(2) == (unsigned char)0x0A)){
+        sign[0] = 'S';
+        sign[1] = 'M';
+        sign[2] = 'I';
+        sign[3] = 'L';
+        qDebug() << "Smile file";
+        return "Smile file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x20) && ((unsigned char)a.at(1) == (unsigned char)0x02)
+             && ((unsigned char)a.at(2) == (unsigned char)0x01) && ((unsigned char)a.at(3) == (unsigned char)0x62)
+             && ((unsigned char)a.at(4) == (unsigned char)0xA0) && ((unsigned char)a.at(5) == (unsigned char)0x1E)
+             && ((unsigned char)a.at(6) == (unsigned char)0xAB) && ((unsigned char)a.at(7) == (unsigned char)0x07)
+             && ((unsigned char)a.at(8) == (unsigned char)0x02) && ((unsigned char)a.at(9) == (unsigned char)0x00)
+             && ((unsigned char)a.at(10) == (unsigned char)0x00) && ((unsigned char)a.at(11) == (unsigned char)0x00)){
+        sign[0] = 'T';
+        sign[1] = 'B';
+        sign[2] = 'L';
+        sign[3] = 'D';
+        qDebug() << "Tableau Datasource";
+        return "Tableau Datasource";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x55) && ((unsigned char)a.at(1) == (unsigned char)0x55)
+             && ((unsigned char)a.at(2) == (unsigned char)0xAA) && ((unsigned char)a.at(3) == (unsigned char)0xAA)){
+        sign[0] = 'P';
+        sign[1] = 'H';
+        sign[2] = 'C';
+        sign[3] = 'P';
+        qDebug() << "PhotoCap Vector";
+        return "PhotoCap Vector";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x65) && ((unsigned char)a.at(1) == (unsigned char)0x87)
+             && ((unsigned char)a.at(2) == (unsigned char)0x78) && ((unsigned char)a.at(3) == (unsigned char)0x56)){
+        sign[0] = 'P';
+        sign[1] = 'H';
+        sign[2] = 'C';
+        sign[3] = 'T';
+        qDebug() << "PhotoCap Object Templates";
+        return "PhotoCap Object Templates";
     }else{
 
     }

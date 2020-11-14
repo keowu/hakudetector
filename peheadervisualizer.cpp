@@ -1,3 +1,11 @@
+/***************************************************************************
+ *                                                                         *
+ *   Copyright (C) 2020 by Keowu                                           *
+ *                                                                         *
+ *   www.joaovitor.gq                                                      *
+ *   www.github.com/keowu                                                  *
+ *                                                                         *
+ ***************************************************************************/
 #include "peheadervisualizer.h"
 #include "ui_peheadervisualizer.h"
 

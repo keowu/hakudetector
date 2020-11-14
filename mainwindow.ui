@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Haku Detector | DEV | v1.0.6.50-DEV | RELEASE FOR TESTING</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: #2c2f33	;
@@ -216,7 +216,7 @@ color: white;</string>
     <item row="8" column="1">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>© Keowu - www.github.com/keowu</string>
+       <string>© Keowu - www.github.com/keowu | THIS IS ALPHA DEV VERSION </string>
       </property>
      </widget>
     </item>

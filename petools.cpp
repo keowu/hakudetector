@@ -1,3 +1,11 @@
+/***************************************************************************
+ *                                                                         *
+ *   Copyright (C) 2020 by Keowu                                           *
+ *                                                                         *
+ *   www.joaovitor.gq                                                      *
+ *   www.github.com/keowu                                                  *
+ *                                                                         *
+ ***************************************************************************/
 #include "petools.h"
 #include "ui_petools.h"
 #include <QTextCodec>

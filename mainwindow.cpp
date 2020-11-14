@@ -1,3 +1,11 @@
+/***************************************************************************
+ *                                                                         *
+ *   Copyright (C) 2020 by Keowu                                           *
+ *                                                                         *
+ *   www.joaovitor.gq                                                      *
+ *   www.github.com/keowu                                                  *
+ *                                                                         *
+ ***************************************************************************/
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <qfiledialog.h>

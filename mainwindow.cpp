@@ -41,6 +41,8 @@
 //get admin
 #include <shlobj.h>
 
+//hexedito
+#include "QHexView.h"
 
 QString path;
 HANDLE hProcessSnap;
@@ -125,4 +127,24 @@ void MainWindow::on_pushButton_3_clicked()
     injecttool.setWindowTitle("DLL Inject");
     injecttool.isUSERANDMIN(IsUserAnAdmin());
     injecttool.exec();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*(*.exe)"));
+    if(path == ""){
+        QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
+    }else{
+        QMessageBox::warning(this, "Carregando !", "Espere alguns segundos enquanto preparamos tudo...");
+    }
+    QFile file_bytes(path);
+    if(!file_bytes.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QMessageBox::critical(this, "Erro", "File is READ ONLY ! try: give me Administrator acess !");
+        return;
+    }
+    QByteArray a = file_bytes.readAll();
+    QHexView *phexView = new QHexView;
+    phexView->setData(new QHexView::DataStorageArray(a));
+    phexView->setWindowTitle("Hex Analyser");
+    phexView->show();
 }

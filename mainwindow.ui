@@ -209,7 +209,7 @@ color: white;</string>
        <string notr="true">background-color: #7289da;</string>
       </property>
       <property name="text">
-       <string>5</string>
+       <string>Hex Editor</string>
       </property>
      </widget>
     </item>

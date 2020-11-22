@@ -722,6 +722,84 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[3] = 'T';
         qDebug() << "PhotoCap Object Templates";
         return "PhotoCap Object Templates";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4A) && ((unsigned char)a.at(1) == (unsigned char)0x6F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x79) && ((unsigned char)a.at(3) == (unsigned char)0x21)){
+        sign[0] = 'J';
+        sign[1] = 'O';
+        sign[2] = 'Y';
+        sign[3] = '!';
+        qDebug() << "Preferred Executable Format";
+        return "Preferred Executable Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x0A) && ((unsigned char)a.at(1) == (unsigned char)0x0D)
+             && ((unsigned char)a.at(2) == (unsigned char)0x0D) && ((unsigned char)a.at(3) == (unsigned char)0x0A)){
+        sign[0] = 'P';
+        sign[1] = 'C';
+        sign[2] = 'A';
+        sign[3] = 'P';
+        qDebug() << "PCAP Next Generation Dump File Format";
+        return "PCAP Next Generation Dump File Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x46) && ((unsigned char)a.at(9) == (unsigned char)0x41)
+             && ((unsigned char)a.at(10) == (unsigned char)0x58) && ((unsigned char)a.at(11) == (unsigned char)0x58)){
+        sign[0] = 'F';
+        sign[1] = 'O';
+        sign[2] = 'R';
+        sign[3] = 'M';
+        qDebug() << "IFF Facsimile Image";
+        return "IFF Facsimile Image";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x53) && ((unsigned char)a.at(1) == (unsigned char)0x44)
+             && ((unsigned char)a.at(2) == (unsigned char)0x50) && ((unsigned char)a.at(3) == (unsigned char)0x58)){
+        sign[0] = 'D';
+        sign[1] = 'X';
+        sign[2] = 'P';
+        qDebug() << "SMPTE DPX image (big-endian format)";
+        return "SMPTE DPX image (big-endian format)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x58) && ((unsigned char)a.at(1) == (unsigned char)0x50)
+             && ((unsigned char)a.at(2) == (unsigned char)0x44) && ((unsigned char)a.at(3) == (unsigned char)0x53)){
+        sign[0] = 'D';
+        sign[1] = 'X';
+        sign[2] = 'P';
+        qDebug() << "SMPTE DPX image (little-endian format)";
+        return "SMPTE DPX image (little-endian format)";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x78) && ((unsigned char)a.at(1) == (unsigned char)0x61)
+             && ((unsigned char)a.at(2) == (unsigned char)0x72) && ((unsigned char)a.at(3) == (unsigned char)0x21)){
+        sign[0] = 'X';
+        sign[1] = 'A';
+        sign[2] = 'R';
+        qDebug() << "eXtensible ARchive format";
+        return "eXtensible ARchive format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x54) && ((unsigned char)a.at(1) == (unsigned char)0x41)
+             && ((unsigned char)a.at(2) == (unsigned char)0x50) && ((unsigned char)a.at(3) == (unsigned char)0x45)){
+        sign[0] = 'T';
+        sign[1] = 'A';
+        sign[2] = 'P';
+        sign[3] = 'E';
+        qDebug() << "Microsoft Tape Format";
+        return "Microsoft Tape Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x1A) && ((unsigned char)a.at(1) == (unsigned char)0x45)
+             && ((unsigned char)a.at(2) == (unsigned char)0xDF) && ((unsigned char)a.at(3) == (unsigned char)0xA3)){
+        sign[0] = 'W';
+        sign[1] = 'E';
+        sign[2] = 'B';
+        sign[3] = 'M';
+        qDebug() << "Matroska media container, including WebM";
+        return "Matroska media container, including WebM";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4C)
+             && ((unsigned char)a.at(2) == (unsigned char)0x49) && ((unsigned char)a.at(3) == (unsigned char)0x46)){
+        sign[0] = 'F';
+        sign[1] = 'L';
+        sign[2] = 'I';
+        sign[3] = 'F';
+        qDebug() << "Free Lossless Image Format";
+        return "Free Lossless Image Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4E) && ((unsigned char)a.at(1) == (unsigned char)0x45)
+             && ((unsigned char)a.at(2) == (unsigned char)0x53) && ((unsigned char)a.at(3) == (unsigned char)0x1A)){
+        sign[0] = 'N';
+        sign[1] = 'E';
+        sign[2] = 'S';
+        qDebug() << "Nintendo Entertainment System ROM file";
+        return "Nintendo Entertainment System ROM file";
     }else{
 
     }

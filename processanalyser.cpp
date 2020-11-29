@@ -800,6 +800,95 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = 'S';
         qDebug() << "Nintendo Entertainment System ROM file";
         return "Nintendo Entertainment System ROM file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x54) && ((unsigned char)a.at(1) == (unsigned char)0x52)
+             && ((unsigned char)a.at(2) == (unsigned char)0x53) && ((unsigned char)a.at(3) == (unsigned char)0x44)
+             && ((unsigned char)a.at(4) == (unsigned char)0x54)){
+        sign[0] = 'T';
+        sign[1] = 'R';
+        sign[2] = 'S';
+        sign[3] = 'D';
+        qDebug() << "TRSDT - Trasdata Vehicle Reader";
+        return "TRSDT - Trasdata Vehicle Reader";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x50) && ((unsigned char)a.at(1) == (unsigned char)0x43)){
+        sign[0] = 'S';
+        sign[1] = 'R';
+        sign[2] = 'E';
+        sign[3] = 'C';
+        qDebug() << "S-REC Motorola S-Record";
+        return "S-REC Motorola S-Record";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x41) && ((unsigned char)a.at(9) == (unsigned char)0x49)
+             && ((unsigned char)a.at(10) == (unsigned char)0x46) && ((unsigned char)a.at(11) == (unsigned char)0x46)){
+        sign[0] = 'F';
+        sign[1] = 'O';
+        sign[2] = 'R';
+        sign[3] = 'M';
+        qDebug() << "Audio Interchange File Format";
+        return "Audio Interchange File Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x38) && ((unsigned char)a.at(9) == (unsigned char)0x53)
+             && ((unsigned char)a.at(10) == (unsigned char)0x56) && ((unsigned char)a.at(11) == (unsigned char)0x58)){
+        sign[0] = 'F';
+        sign[1] = 'O';
+        sign[2] = 'R';
+        sign[3] = 'M';
+        qDebug() << "IFF 8-Bit Sampled Voice";
+        return "IFF 8-Bit Sampled Voice";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x46) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(8) == (unsigned char)0x49) && ((unsigned char)a.at(9) == (unsigned char)0x4C)
+             && ((unsigned char)a.at(10) == (unsigned char)0x42) && ((unsigned char)a.at(11) == (unsigned char)0x4D)){
+        sign[0] = 'I';
+        sign[1] = 'L';
+        sign[2] = 'B';
+        sign[3] = 'M';
+        qDebug() << "IFF Interleaved Bitmap Image";
+        return "IFF Interleaved Bitmap Image";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x49) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x2A) && ((unsigned char)a.at(3) == (unsigned char)0x00)
+             && ((unsigned char)a.at(4) == (unsigned char)0x10) && ((unsigned char)a.at(5) == (unsigned char)0x00)
+             && ((unsigned char)a.at(6) == (unsigned char)0x00) && ((unsigned char)a.at(7) == (unsigned char)0x00)
+             && ((unsigned char)a.at(8) == (unsigned char)0x43) && ((unsigned char)a.at(9) == (unsigned char)0x52)){
+        sign[0] = 'I';
+        sign[1] = 'I';
+        sign[2] = 'C';
+        sign[3] = 'R';
+        qDebug() << "Canon RAW Format Version 2 or Canon's RAW format is based on TIFF.";
+        return "Canon RAW Format Version 2 or Canon's RAW format is based on TIFF.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0xFF) && ((unsigned char)a.at(1) == (unsigned char)0xFE)
+             && ((unsigned char)a.at(2) == (unsigned char)0x00) && ((unsigned char)a.at(3) == (unsigned char)0x00)){
+        sign[0] = 'M';
+        sign[1] = 'K';
+        sign[2] = 'T';
+        sign[3] = 'X';
+        qDebug() << "Byte-order mark for text file encoded in little-endian 32-bit Unicode Transfer Format.";
+        return "Byte-order mark for text file encoded in little-endian 32-bit Unicode Transfer Format.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x46) && ((unsigned char)a.at(3) == (unsigned char)0x46)
+             && ((unsigned char)a.at(8) == (unsigned char)0x57) && ((unsigned char)a.at(9) == (unsigned char)0x45)
+             && ((unsigned char)a.at(10) == (unsigned char)0x42) && ((unsigned char)a.at(11) == (unsigned char)0x50)){
+        sign[0] = 'W';
+        sign[1] = 'E';
+        sign[2] = 'B';
+        sign[3] = 'P';
+        qDebug() << "Google WebP image file, where ?? ?? ?? ?? is the file size. More information on WebP File Header";
+        return "Google WebP image file, where ?? ?? ?? ?? is the file size. More information on WebP File Header";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4B) && ((unsigned char)a.at(1) == (unsigned char)0x44)
+             && ((unsigned char)a.at(2) == (unsigned char)0x4D)){
+        sign[0] = 'K';
+        sign[1] = 'D';
+        sign[2] = 'M';
+        qDebug() << "VMDK files";
+        return "VMDK files";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x04) && ((unsigned char)a.at(1) == (unsigned char)0x22)
+             && ((unsigned char)a.at(2) == (unsigned char)0x4D) && ((unsigned char)a.at(3) == (unsigned char)0x18)){
+        sign[0] = 'L';
+        sign[1] = 'Z';
+        sign[2] = '4';
+        qDebug() << "LZ4 Frame Format";
+        return "LZ4 Frame Format";
     }else{
 
     }

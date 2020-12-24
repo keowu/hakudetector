@@ -131,17 +131,16 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*(*.exe)"));
-    if(path == ""){
+    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*"));
+    if(path.isEmpty()){
         QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
+        return;
     }else{
         QMessageBox::warning(this, "Carregando !", "Espere alguns segundos enquanto preparamos tudo...");
     }
     QFile file_bytes(path);
-    if(!file_bytes.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QMessageBox::critical(this, "Erro", "File is READ ONLY ! try: give me Administrator acess !");
-        return;
-    }
+    file_bytes.open(QIODevice::ReadOnly | QIODevice::Text);
+
     QByteArray a = file_bytes.readAll();
     QHexView *phexView = new QHexView;
     phexView->setData(new QHexView::DataStorageArray(a));

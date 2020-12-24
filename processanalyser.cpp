@@ -889,6 +889,84 @@ QString fileSignature(QByteArray a, QString* sign){
         sign[2] = '4';
         qDebug() << "LZ4 Frame Format";
         return "LZ4 Frame Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x00) && ((unsigned char)a.at(1) == (unsigned char)0x00)
+             && ((unsigned char)a.at(2) == (unsigned char)0x01) && ((unsigned char)a.at(3) == (unsigned char)0x00)){
+        sign[0] = 'I';
+        sign[1] = 'C';
+        sign[2] = 'O';
+        qDebug() << "Computer icon encoded in ICO file format";
+        return "Computer icon encoded in ICO file format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x42) && ((unsigned char)a.at(1) == (unsigned char)0x5A)
+             && ((unsigned char)a.at(2) == (unsigned char)0x68)){
+        sign[0] = 'B';
+        sign[1] = 'Z';
+        sign[2] = 'h';
+        qDebug() << "Compressed file using Bzip2 algorithm";
+        return "Compressed file using Bzip2 algorithm";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x42) && ((unsigned char)a.at(1) == (unsigned char)0x41)
+             && ((unsigned char)a.at(2) == (unsigned char)0x43) && ((unsigned char)a.at(3) == (unsigned char)0x4B)
+             && ((unsigned char)a.at(4) == (unsigned char)0x4D) && ((unsigned char)a.at(5) == (unsigned char)0x49)
+             && ((unsigned char)a.at(6) == (unsigned char)0x4B) && ((unsigned char)a.at(7) == (unsigned char)0x45)
+             && ((unsigned char)a.at(8) == (unsigned char)0x44) && ((unsigned char)a.at(9) == (unsigned char)0x49)
+             && ((unsigned char)a.at(10) == (unsigned char)0x53) && ((unsigned char)a.at(11) == (unsigned char)0x4B)){
+        sign[0] = 'B';
+        sign[1] = 'A';
+        sign[2] = 'C';
+        qDebug() << "File or tape containing a backup done with AmiBack on an Amiga.";
+        return "File or tape containing a backup done with AmiBack on an Amiga.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x1F)){
+        if(((unsigned char)a.at(1) == (unsigned char)0xA0)){
+            sign[0] = 'T';
+            sign[1] = 'A';
+            sign[2] = 'R';
+            qDebug() << "Compressed file (often tar zip) | using LZH algorithm";
+            return "Compressed file (often tar zip) | using LZH algorithm";
+        }else if(((unsigned char)a.at(1) == (unsigned char)0x9D)){
+            sign[0] = 'T';
+            sign[1] = 'A';
+            sign[2] = 'R';
+            qDebug() << "Compressed file (often tar zip) | using Lempel-Ziv-Welch algorithm";
+            return "Compressed file (often tar zip) | using Lempel-Ziv-Welch algorithm";
+        }
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x66) && ((unsigned char)a.at(1) == (unsigned char)0x74)
+             && ((unsigned char)a.at(2) == (unsigned char)0x79) && ((unsigned char)a.at(3) == (unsigned char)0x70)
+             && ((unsigned char)a.at(4) == (unsigned char)0x33) && ((unsigned char)a.at(5) == (unsigned char)0x67)){
+        sign[0] = '3';
+        sign[1] = 'G';
+        sign[2] = 'P';
+        qDebug() << "3rd Generation Partnership Project 3GPP and 3GPP2 multimedia files.";
+        return "3rd Generation Partnership Project 3GPP and 3GPP2 multimedia files.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x30) && ((unsigned char)a.at(1) == (unsigned char)0x82)){
+        sign[0] = 'D';
+        sign[1] = 'E';
+        sign[2] = 'R';
+        qDebug() << "DER encoded X.509 certificate.";
+        return "DER encoded X.509 certificate.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x62) && ((unsigned char)a.at(1) == (unsigned char)0x76)
+             && ((unsigned char)a.at(2) == (unsigned char)0x78) && ((unsigned char)a.at(3) == (unsigned char)0x32)){
+        sign[0] = 'l';
+        sign[1] = 'z';
+        sign[2] = 'f';
+        sign[3] = 's';
+        qDebug() << "LZFSE - Lempel-Ziv style data compression algorithm using Finite State Entropy coding. OSS by Apple.";
+        return "LZFSE - Lempel-Ziv style data compression algorithm using Finite State Entropy coding. OSS by Apple";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x77) && ((unsigned char)a.at(1) == (unsigned char)0x4F)
+             && ((unsigned char)a.at(2) == (unsigned char)0x46)){
+        if(((unsigned char)a.at(3) == (unsigned char)0x46)){
+            sign[0] = 'W';
+            sign[1] = 'O';
+            sign[2] = 'F';
+            sign[3] = 'F';
+            qDebug() << "WOFF File Format 1.0";
+            return "WOFF File Format 1.0";
+        }else if(((unsigned char)a.at(3) == (unsigned char)0x32)){
+            sign[0] = 'W';
+            sign[1] = 'O';
+            sign[2] = 'F';
+            sign[3] = '2';
+            qDebug() << "WOFF File Format 2.0";
+            return "WOFF File Format 2.0";
+        }
     }else{
 
     }

@@ -31,7 +31,16 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_6_clicked();
+
 private:
+    typedef struct{
+        QString virustotAPI;
+        QString path;
+    }constantes;
+
+    constantes constant;
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

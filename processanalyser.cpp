@@ -967,6 +967,72 @@ QString fileSignature(QByteArray a, QString* sign){
             qDebug() << "WOFF File Format 2.0";
             return "WOFF File Format 2.0";
         }
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x34) && ((unsigned char)a.at(1) == (unsigned char)0x12)
+             && ((unsigned char)a.at(2) == (unsigned char)0xAA) && ((unsigned char)a.at(3) == (unsigned char)0x55)){
+        sign[0] = 'V';
+        sign[1] = 'P';
+        sign[2] = 'K';
+        qDebug() << "VPK file, used to store game data for some Source Engine games";
+        return "VPK file, used to store game data for some Source Engine games";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x52) && ((unsigned char)a.at(1) == (unsigned char)0x53)
+             && ((unsigned char)a.at(2) == (unsigned char)0x56) && ((unsigned char)a.at(3) == (unsigned char)0x4B)
+             && ((unsigned char)a.at(4) == (unsigned char)0x44) && ((unsigned char)a.at(5) == (unsigned char)0x41)
+             && ((unsigned char)a.at(6) == (unsigned char)0x54) && ((unsigned char)a.at(7) == (unsigned char)0x41)){
+        sign[0] = 'R';
+        sign[1] = 'S';
+        sign[2] = 'V';
+        qDebug() << "QuickZip rs compressed archive";
+        return "QuickZip rs compressed archive";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x28) && ((unsigned char)a.at(1) == (unsigned char)0xB5)
+             && ((unsigned char)a.at(2) == (unsigned char)0x2F) && ((unsigned char)a.at(3) == (unsigned char)0xFD)){
+        sign[0] = 'Z';
+        sign[1] = 'S';
+        sign[2] = 'T';
+        qDebug() << "Zstandard compressed file";
+        return "Zstandard compressed file";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x44) && ((unsigned char)a.at(1) == (unsigned char)0x49)
+             && ((unsigned char)a.at(2) == (unsigned char)0x43) && ((unsigned char)a.at(3) == (unsigned char)0x4D)){
+        sign[0] = 'D';
+        sign[1] = 'C';
+        sign[2] = 'M';
+        qDebug() << "DICOM Medical File Format";
+        return "DICOM Medical File Format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x45) && ((unsigned char)a.at(1) == (unsigned char)0x4D)
+             && ((unsigned char)a.at(2) == (unsigned char)0x55) && ((unsigned char)a.at(3) == (unsigned char)0x33)){
+        sign[0] = 'I';
+        sign[1] = 'S';
+        sign[2] = 'O';
+        qDebug() << "Emulator III synth samples";
+        return "Emulator III synth samples";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x50) && ((unsigned char)a.at(1) == (unsigned char)0x41)
+             && ((unsigned char)a.at(2) == (unsigned char)0x52) && ((unsigned char)a.at(3) == (unsigned char)0x31)){
+        sign[0] = 'P';
+        sign[1] = 'A';
+        sign[2] = 'R';
+        sign[3] = '1';
+        qDebug() << "Apache Parquet columnar file format";
+        return "Apache Parquet columnar file format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x78) && ((unsigned char)a.at(1) == (unsigned char)0x56)
+             && ((unsigned char)a.at(2) == (unsigned char)0x34)){
+        sign[0] = 'P';
+        sign[1] = 'B';
+        sign[2] = 'T';
+        qDebug() << "PhotoCap Template | pbt, pdt, pea, peb, pet, pgt, pict, pjt, pkt and pmt.";
+        return "PhotoCap Template | pbt, pdt, pea, peb, pet, pgt, pict, pjt, pkt and pmt.";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x4F) && ((unsigned char)a.at(1) == (unsigned char)0x62)
+             && ((unsigned char)a.at(2) == (unsigned char)0x6A) && ((unsigned char)a.at(3) == (unsigned char)0x01)){
+        sign[0] = 'A';
+        sign[1] = 'V';
+        sign[2] = 'R';
+        sign[3] = 'O';
+        qDebug() << "Apache Avro binary file format";
+        return "Apache Avro binary file format";
+    }else if(((unsigned char)a.at(0) == (unsigned char)0x53) && ((unsigned char)a.at(1) == (unsigned char)0x45)
+             && ((unsigned char)a.at(2) == (unsigned char)0x51) && ((unsigned char)a.at(3) == (unsigned char)0x36)){
+        sign[0] = 'R';
+        sign[1] = 'C';
+        qDebug() << "RCFile columnar file format";
+        return "RCFile columnar file format";
     }else{
 
     }

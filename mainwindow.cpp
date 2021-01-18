@@ -44,7 +44,9 @@
 //hexedito
 #include "QHexView.h"
 
-QString path;
+//Cryptohash
+#include <QCryptographicHash>
+
 HANDLE hProcessSnap;
 HANDLE hProcess = NULL;
 PROCESSENTRY32 pe32;
@@ -54,6 +56,22 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    constant.path = QDir::currentPath() + "/haku.config";
+    if(constant.path.isEmpty()){
+        qDebug() << "ERRO !";
+    }else{
+        qDebug() << "SUCESSO !";
+        QFile hakuconfig(constant.path);
+        if(hakuconfig.open(QIODevice::ReadOnly | QIODevice::Text)){
+            QString virustotapi = hakuconfig.readLine();
+            int inicio = virustotapi.indexOf("V");
+            int fim = virustotapi.indexOf("=");
+            constant.virustotAPI = virustotapi.replace(inicio, fim+1, "");
+            qDebug() << "VIRUS TOTAL API KEY FROM CONFIG FILE = " << constant.virustotAPI;
+        }else{
+            qDebug() << "ERRO AO LER !";
+        }
+    }
 }
 
 MainWindow::~MainWindow()
@@ -64,8 +82,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*(*.exe)"));
-    if(path == ""){
+    constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*(*.exe)"));
+    if(constant.path == ""){
         QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
     }else{
         QMessageBox::warning(this, "Carregando !", "Espere alguns segundos enquanto preparamos tudo...");
@@ -131,14 +149,14 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    path = QFileDialog::getOpenFileName(this, tr("Escolha a mensagem"), "/", tr("*"));
-    if(path.isEmpty()){
+    constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*"));
+    if(constant.path.isEmpty()){
         QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
         return;
     }else{
         QMessageBox::warning(this, "Carregando !", "Espere alguns segundos enquanto preparamos tudo...");
     }
-    QFile file_bytes(path);
+    QFile file_bytes(constant.path);
     file_bytes.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QByteArray a = file_bytes.readAll();
@@ -146,4 +164,21 @@ void MainWindow::on_pushButton_4_clicked()
     phexView->setData(new QHexView::DataStorageArray(a));
     phexView->setWindowTitle("Hex Analyser");
     phexView->show();
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*"));
+    if(constant.path.isEmpty()){
+        QMessageBox::warning(this, "Cancelado !", "Você não selecionou nenhum arquivo.");
+        return;
+    }else{
+        QMessageBox::warning(this, "Carregando !", "Espere alguns segundos enquanto preparamos tudo...");
+    }
+    QFile file_analyse(constant.path);
+    file_analyse.open(QIODevice::ReadOnly);
+    QCryptographicHash hash(QCryptographicHash::Md5);
+    if(hash.addData(&file_analyse)){
+        qDebug() << "MD5 HASH: " << hash.result().toHex();
+    }
 }

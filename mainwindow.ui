@@ -35,7 +35,7 @@ color: white;</string>
        <string notr="true">background-color: #7289da;</string>
       </property>
       <property name="text">
-       <string>4</string>
+       <string>SEARCH A FILE IN VIRUS TOTAL</string>
       </property>
      </widget>
     </item>

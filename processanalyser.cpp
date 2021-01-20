@@ -26,6 +26,8 @@ processanalyser::processanalyser(QWidget *parent) :
     ui(new Ui::processanalyser)
 {
     ui->setupUi(this);
+    //permitir o drop de arquivos
+    setAcceptDrops(true);
 }
 
 processanalyser::~processanalyser()
@@ -1104,4 +1106,27 @@ void processanalyser::on_pushButton_4_clicked()
     pehv.openFileFromAnotherScreen(pathA);
     pehv.setWindowTitle("From another Process Analysis.");
     pehv.exec();
+}
+
+void processanalyser::dropEvent(QDropEvent *event){
+    const QMimeData* mimeData=event->mimeData();
+
+    if(mimeData->hasUrls())
+    {
+        QList<QUrl> urlList=mimeData->urls();
+
+        if(urlList.count())
+        {
+            QString FileName=urlList.at(0).toLocalFile();
+
+            QMessageBox::warning(this, "Detectado arquivo via drag'n drop", FileName);
+            pathA = FileName;
+            this->on_pushButton_2_clicked();
+        }
+    }
+}
+
+void processanalyser::dragEnterEvent(QDragEnterEvent *event)
+{
+    event->acceptProposedAction();
 }

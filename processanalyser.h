@@ -2,6 +2,8 @@
 #define PROCESSANALYSER_H
 
 #include <QDialog>
+#include <QDragEnterEvent>
+#include <QMimeData>
 
 namespace Ui {
 class processanalyser;
@@ -23,6 +25,10 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+protected:
+    void dropEvent(QDropEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *event) override;
 
 private:
     Ui::processanalyser *ui;

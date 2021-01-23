@@ -23,8 +23,10 @@ SOURCES += \
 
 HEADERS += \
     QHexView.h \
+    fileSignature.h \
     injecttools.h \
     mainwindow.h \
+    packerprotectordetect.h \
     peheadervisualizer.h \
     petools.h \
     processanalyser.h \

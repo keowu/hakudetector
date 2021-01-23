@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QDragEnterEvent>
 #include <QMimeData>
+#include <packerprotectordetect.h>
+#include <fileSignature.h>
 
 namespace Ui {
 class processanalyser;

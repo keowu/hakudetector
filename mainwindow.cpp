@@ -56,7 +56,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    constant.path = QDir::currentPath() + "/haku.config";
+    constant.path = QDir::currentPath() + "/debug/haku.config";
+    qDebug() << constant.path;
     if(constant.path.isEmpty()){
         qDebug() << "ERRO !";
     }else{

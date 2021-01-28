@@ -24,6 +24,10 @@ injecttools::~injecttools()
     delete ui;
 }
 
+/*
+ * reservado para futuras ideias de adicições.
+ *
+*/
 QLibrary wannahaku("C:\\Users\\Joao\\Documents\\GitHub\\hakudetector\\WannaHakuLib\\x64\\Release\\WannaHakuLib.dll");
 
 typedef void (*blockUserTask)(void);

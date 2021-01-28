@@ -60,7 +60,6 @@ private:
 
 public:
     QString protectorAssignature(QByteArray a){
-        //qDebug() << "PROTECTORS";
         QString ret = NULL;
         int i = 0;
         if(!(a.size() > 3)){

@@ -18,21 +18,21 @@ public:
 
 private slots:
 
-    void on_pushButton_5_clicked();
+    void on_btnFileDetect_clicked();
 
-    void on_pushButton_8_clicked();
+    void on_btnInjectTool_clicked();
 
-    void on_pushButton_9_clicked();
+    void on_btnVirusTotal_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_btnPEHeadVisualizer_clicked();
 
-    void on_pushButton_clicked();
+    void on_btnHexEditor_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_btnOpenDll_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_btnInjectLoadedDllInHaku_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_btnProcessGerencia_clicked();
 
 private:
     typedef struct{

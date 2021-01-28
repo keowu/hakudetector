@@ -29,7 +29,7 @@ void petools::setMemoryFile(QByteArray memorymap){
     Memorymap = memorymap;
     QString dados = QString::fromStdString(Memorymap.toStdString());
     qDebug() << "Data in one line :D -> " << dados;
-    QRegExp separator(" ");//broken on " "
+    QRegExp separator(" ");
     QStringList lista = dados.split(separator);
     ui->lstPETOOLSSTR->addItems(lista);
 }

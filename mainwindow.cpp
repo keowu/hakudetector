@@ -81,7 +81,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_btnOpenDll_clicked()
 {
     constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*(*.exe)"));
     if(constant.path == ""){
@@ -92,55 +92,33 @@ void MainWindow::on_pushButton_5_clicked()
 
 }
 
-void MainWindow::on_pushButton_8_clicked()
+void MainWindow::on_btnInjectLoadedDllInHaku_clicked()
 {
-    hProcessSnap = CreateToolhelp32Snapshot( TH32CS_SNAPPROCESS, 0 );
-    pe32.dwSize = sizeof( PROCESSENTRY32 );		// Tamanho correto
-    do	// loop até encontrar o processo
-        {
-            QString processo = QString::fromWCharArray(pe32.szExeFile);
-            if(processo == "explorer.exe")
-            {
-                qDebug() << "Encontrei" << processo;
-                QMessageBox::critical(this, "Injected", "Finded");
-                hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pe32.th32ProcessID);	// abre, assina ao hProcess handle
-                break;	// Para o loop
-            }
-        }
-        while(Process32Next(hProcessSnap, &pe32));
-
-    CloseHandle( hProcessSnap );	// fecha o handle
-
-        if(hProcess == NULL){
-            QMessageBox::critical(this, "Erro", "Erro");
-        }else{
-            QMessageBox::warning(this, "Sucesso", "Sucesso com o handle !");
-        }
-        CloseHandle(hProcess);	// close the handle
+    QMessageBox::warning(this, "Em breve", "Em breve será possível modificar o HAKU com addons!");
 }
 
-void MainWindow::on_pushButton_9_clicked()
+void MainWindow::on_btnProcessGerencia_clicked()
 {
     ProcessViewer procview;
     qDebug() << "Form de processos abertos";
     procview.exec();
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_btnFileDetect_clicked()
 {
     processanalyser procan;
     procan.setWindowTitle("Detect File Assignatures");
     procan.exec();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_btnPEHeadVisualizer_clicked()
 {
     peheadervisualizer pehv;
     pehv.setWindowTitle("PE HEADER VISUALIZER");
     pehv.exec();
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_btnInjectTool_clicked()
 {
     injecttools injecttool;
     injecttool.setWindowTitle("DLL Inject");
@@ -148,7 +126,7 @@ void MainWindow::on_pushButton_3_clicked()
     injecttool.exec();
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_btnHexEditor_clicked()
 {
     constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*"));
     if(constant.path.isEmpty()){
@@ -167,7 +145,7 @@ void MainWindow::on_pushButton_4_clicked()
     phexView->show();
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_btnVirusTotal_clicked()
 {
     constant.path = QFileDialog::getOpenFileName(this, tr("Escolha o arquivo"), "/", tr("*"));
     if(constant.path.isEmpty()){

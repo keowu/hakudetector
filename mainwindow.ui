@@ -20,7 +20,7 @@ color: white;</string>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="btnFileDetect">
       <property name="styleSheet">
        <string notr="true">background-color: #7289da;</string>
       </property>
@@ -30,7 +30,7 @@ color: white;</string>
      </widget>
     </item>
     <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="btnVirusTotal">
       <property name="styleSheet">
        <string notr="true">background-color: #7289da;</string>
       </property>
@@ -68,7 +68,7 @@ color: white;</string>
     <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnPEHeadVisualizer">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -88,7 +88,7 @@ color: white;</string>
     <item row="0" column="0" colspan="2">
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="2">
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="btnInjectLoadedDllInHaku">
         <property name="styleSheet">
          <string notr="true">background-color: #7289da;
 color: white;</string>
@@ -138,7 +138,7 @@ color: white;</string>
        </spacer>
       </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="btnOpenDll">
         <property name="styleSheet">
          <string notr="true">background-color: #7289da;
 color: white;</string>
@@ -159,7 +159,7 @@ color: white;</string>
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QPushButton" name="pushButton_9">
+       <widget class="QPushButton" name="btnProcessGerencia">
         <property name="styleSheet">
          <string notr="true">background-color: #7289da;
 color: white;</string>
@@ -182,7 +182,7 @@ color: white;</string>
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btnInjectTool">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -204,7 +204,7 @@ color: white;</string>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="btnHexEditor">
       <property name="styleSheet">
        <string notr="true">background-color: #7289da;</string>
       </property>
